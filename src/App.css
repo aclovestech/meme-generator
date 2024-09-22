@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+html {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: "Karla", sans-serif;
+  background-color: rgb(40, 40, 40);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
+  max-width: 550px;
+  margin: 50px auto;
+}
+
+.navbar {
+  background-image: linear-gradient(to right, #672280, #A626D3);
+  height: 65px;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+}
+
+.navbar__title {
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+}
+
+.navbar__title-text {
+  font-weight: bold;
+  color: #FFFFFF;
+  letter-spacing: -2px;
+  white-space: nowrap;
+}
+
+.navbar__title-image {
+  width: 31px;
+  height: 26px;
+  margin-right: 5px;
+}
+
+main {
+  background-color: #FFFFFF;
+  border-radius: 0px 0px 5px 5px;
+  padding: 30px 40px 20px 40px;
+}
+
+.input-field {
+  display: flex;
+  width: 477px;
+  justify-content: space-between;
+}
+
+.input-field__group {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.input-field__group>label {
+  margin-bottom: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-field__group>input {
+  width: 222px;
+  height: 35px;
+  border: 1px solid #D1D5DB;
+  border-radius: 5px;
+  letter-spacing: 0.5px;
+}
+
+.input-field__group>input::placeholder {
+  color: #6B7280;
+  padding-left: 10px;
+}
+
+.input-field__submit {
+  width: 477px;
+  height: 40px;
+  background-image: linear-gradient(to right, #711F8D, #A818DA);
+  color: #FFFFFF;
+  border-radius: 5px;
+  border: none;
+  margin: 15px auto;
+  font-weight: bold;
+}
+
+.generated-image-panel {
+  max-width: 477px;
+  max-height: 268px;
+  object-fit: contain;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
