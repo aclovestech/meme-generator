@@ -1,22 +1,23 @@
-import memesData from "../memesData";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Meme() {
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
-    randomImage: memesData.data.memes[0].url,
+    randomImage: "https://i.imgflip.com/30b1gx.jpg",
   });
 
-  const [allMemesData, setAllMemesData] = useState(memesData);
+  const [allMemesData, setAllMemesData] = useState([]);
+
+  const apiUrl = "https://api.imgflip.com/get_memes";
 
   function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
   function getRandomMemeImage() {
-    const memes = allMemesData.data.memes;
-    const url = memes[getRandomNumber(0, memes.length)].url;
+    const url = allMemesData[getRandomNumber(0, allMemesData.length)].url;
     setMeme((prevMeme) => ({ ...prevMeme, randomImage: url }));
   }
 
@@ -29,12 +30,18 @@ export default function Meme() {
     }));
   }
 
+  useEffect(() => {
+    async function getMemes() {
+      const res = await fetch(`${apiUrl}`);
+      const data = await res.json();
+      setAllMemesData(data.data.memes);
+    }
+    getMemes();
+  }, []);
+
   return (
     <main>
       <div className="form">
-        {/* <label htmlFor="topText" className="form__label">
-          Top text
-        </label> */}
         <input
           type="text"
           placeholder="Shut up"
@@ -44,9 +51,6 @@ export default function Meme() {
           onChange={handleChange}
           value={meme.topText}
         ></input>
-        {/* <label htmlFor="bottomText" className="form__label">
-          Bottom text
-        </label> */}
         <input
           type="text"
           placeholder="And take my money"
