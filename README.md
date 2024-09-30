@@ -1,4 +1,4 @@
-# App #5: Meme Generator
+# Meme Generator
 
 ## Reference(s):
 
